@@ -12,3 +12,6 @@ Current issues:
 Basing my code off an example US choropleth tutorial:
 - https://leafletjs.com/examples/choropleth/
 
+Eventual goal:
+- After creating the health risk statistical model (stage 1 of thesis), I will incorporate daily HI to forecast risk for heat-related deaths in VA cliamte divisions using this web application (stage 2).
+
