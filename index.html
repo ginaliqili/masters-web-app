@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heat-Realated Health Risks in Virginia Climate Divisions</title>
+    <meta charset="utf-8" />
+    <link 
+        rel="stylesheet" 
+        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="climate_divisions.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script
+        src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
+    </script>
+
+    <script>
+        var map = L.map('map').setView([37.920994, -78.639136], 7);
+
+        
+        mapLink = 
+            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+            }).addTo(map);
+
+        L.geoJson(climDivData, {style: style}).addTo(map);
+            
+    </script>
+</body>
+</html>
