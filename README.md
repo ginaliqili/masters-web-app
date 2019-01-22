@@ -7,7 +7,7 @@ What this code is trying to achieve:
 - Color Virginia climate divisions based on severity of Heat Index (HI)
 
 Current issues:
-- Due to syntax of Leaflet JS library, I am required to give each feature in a geoJSON a style which includes the color that I am trying to assign based on HI. This value always comes back undefined!
+- Due to syntax of Leaflet JS library, I am required to give each feature in a geoJSON a style which includes the color that I am trying to assign based on HI (which I am retrieving via AJAX. This value always comes back undefined!
 
 Basing my code off an example US choropleth tutorial:
 - https://leafletjs.com/examples/choropleth/
