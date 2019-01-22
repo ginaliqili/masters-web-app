@@ -4,7 +4,7 @@ web app for master's thesis
 What this code is trying to achieve:
 - Use OpenWeatherMap to get maximum temperature and humidity for current day
 - Calculate the Heat Index (HI) based on these metrics
-- Color Virginia climate regions based on severity of Heat Index (HI)
+- Color Virginia climate divisions based on severity of Heat Index (HI)
 
 Current issues:
 - Due to syntax of Leaflet JS library, I am required to give each feature in a geoJSON a style which includes the color that I am trying to assign based on HI. This value always comes back undefined!
