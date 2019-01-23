@@ -3,8 +3,8 @@
 <head>
     <title>Heat-Realated Health Risks in Virginia Climate Divisions</title>
     <meta charset="utf-8" />
-    <link 
-        rel="stylesheet" 
+    <link
+        rel="stylesheet"
         href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
     />
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -22,8 +22,8 @@
     <script>
         var map = L.map('map').setView([37.920994, -78.639136], 7);
 
-        
-        mapLink = 
+
+        mapLink =
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
             'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -31,8 +31,25 @@
             maxZoom: 18,
             }).addTo(map);
 
-        L.geoJson(climDivData, {style: style}).addTo(map);
-            
+
+        //define a dictionary
+        var z = {}
+        for (let j = 0; j < climDivData.features.length; j++) {
+            z[climDivData.features[j].properties.NAME] = null
+        }
+
+        for (let i = 0; i < climDivData.features.length; i++) {
+            style(climDivData.features[i], function(returnDataObj) {
+                z[climDivData.features[i].properties.NAME] = returnDataObj
+            })
+        }
+
+        $(document).ajaxStop(function() {
+            L.geoJson(climDivData, {style: function(feature) {
+                return z[feature.properties.NAME]
+            }}).addTo(map);
+        })
+
     </script>
 </body>
 </html>
