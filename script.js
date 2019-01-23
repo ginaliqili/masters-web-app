@@ -62,7 +62,7 @@ function getHeatIndexColor([lat, lon], name) {
         if (humidity > 85 && temp_max_f > 80 && temp_max_f < 87) {
             HI = HI + ((humidity-85)/10) * ((87-temp_max_f)/5)
         }
-        //callback(name, HI, humidity, temp_max_f)
+        callback(name, HI, humidity, temp_max_f)
     });
 
     var color = 
@@ -87,7 +87,7 @@ function style(feature) {
 
     name = feature.properties.NAME;
 
-    var color = getHeatIndexColor2(coordinates[name], name);
+    var color = getHeatIndexColor(coordinates[name], name);
     return {
         fillColor: color,
         weight: 2,
@@ -99,12 +99,12 @@ function style(feature) {
 
 }
 
-/*
-async function getHeatIndexColor2([lat, lon], name) {
+
+function getHeatIndexColor2([lat, lon], name) {
     const url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=0bd2d25f8ba23d6922bc5c6f81d9d049'
     var HI; 
 
-    var response = await $.getJSON(url, function(data){});
+    var response = $.getJSON(url, function(data){});
     var humidity = response['main']['humidity']
         var temp_max_k = response['main']['temp_max']
         // convert Kelvin to Fahrenheit
@@ -138,7 +138,14 @@ async function getHeatIndexColor2([lat, lon], name) {
                '#FFEDA0';
 
     console.log(color)
-    return color;
+    return {
+        fillColor: color,
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
     
 }
 
@@ -157,7 +164,7 @@ function style2(feature) {
     });
     
 }
-*/
+
 
 
 
